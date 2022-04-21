@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psm/screens/home_screen.dart';
 import 'package:psm/widgets/custom_bottomappbar.dart';
 import 'widgets/custom_appbar.dart';
 
@@ -15,18 +16,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
       home: HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Haseena',
-      ),
-      bottomNavigationBar: CustomBottomAppBar(),
     );
   }
 }

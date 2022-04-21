@@ -26,6 +26,9 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
         ),
       ),
+      //TODO Possible wishlist feature?
+      iconTheme: IconThemeData(color: Colors.black),
+      actions: [IconButton(onPressed: () {}, icon: Icon(Icons.favorite))],
     );
   }
 
