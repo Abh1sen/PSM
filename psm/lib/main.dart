@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psm/config/app_router.dart';
+import 'package:psm/config/theme.dart';
 import 'package:psm/screens/home/home_screen.dart';
 
 void main() {
@@ -11,9 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Haseena',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
+      theme: theme(),
       onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: HomeScreen.routeName,
     );
