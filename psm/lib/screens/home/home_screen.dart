@@ -21,20 +21,25 @@ class HomeScreen extends StatelessWidget {
         title: 'Haseena',
       ),
       bottomNavigationBar: CustomBottomAppBar(),
-      body: Container(
-          child: CarouselSlider(
-        options: CarouselOptions(
-          aspectRatio: 1.5,
-          viewportFraction: 0.85,
-          enlargeCenterPage: true,
-          enlargeStrategy: CenterPageEnlargeStrategy.height,
-          enableInfiniteScroll: false,
-          autoPlay: true,
-        ),
-        items: Category.categories
-            .map((category) => HeroCarouselCard(category: category))
-            .toList(),
-      )),
+      body: Column(
+        children: [
+          Container(
+              child: CarouselSlider(
+            options: CarouselOptions(
+              aspectRatio: 1.5,
+              viewportFraction: 0.85,
+              enlargeCenterPage: true,
+              enlargeStrategy: CenterPageEnlargeStrategy.height,
+              enableInfiniteScroll: false,
+              autoPlay: true,
+            ),
+            items: Category.categories
+                .map((category) => HeroCarouselCard(category: category))
+                .toList(),
+          )),
+          SectionTitle(title: 'RECOMMENDED')
+        ],
+      ),
     );
   }
 }
