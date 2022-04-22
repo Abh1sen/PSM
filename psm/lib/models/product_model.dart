@@ -24,5 +24,18 @@ class Product extends Equatable {
       imageUrl, 
       price, 
       isRecommended, 
-      isPopular];
+      isPopular
+      ];
+  
+  static List<Product> products=[
+    //TODO add sample products
+    Product(
+      name: name, 
+      category: category, 
+      imageUrl: imageUrl, 
+      price: price, 
+      isRecommended: isRecommended, 
+      isPopular: isPopular
+    ),
+  ]
 }
