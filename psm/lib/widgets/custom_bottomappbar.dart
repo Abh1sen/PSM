@@ -11,8 +11,7 @@ class CustomBottomAppBar extends StatelessWidget {
       color: Colors.white,
       child: Container(
         height: 70,
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
           IconButton(
               icon: Icon(
                 Icons.home,
@@ -27,7 +26,7 @@ class CustomBottomAppBar extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/cart');
               }),
           IconButton(
               icon: Icon(
@@ -35,7 +34,7 @@ class CustomBottomAppBar extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/user');
               }),
         ]),
       ),
