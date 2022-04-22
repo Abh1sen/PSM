@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
         color: Colors.white,
         child: Text(
           //TODO add global fonts
-          'Haseena',
+          title,
           style: TextStyle(
             color: Colors.black,
             fontSize: 26,
