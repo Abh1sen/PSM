@@ -1,6 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
+
+  //TODO add sizes
+
   final String name;
   final String category;
   final String imageUrl;

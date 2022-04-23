@@ -26,7 +26,26 @@ class ProductScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: product.name,
       ),
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: Container(
+          height: 70,
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.black),
+                onPressed: () {},
+                child: Text(
+                  'ADD TO CART',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3!
+                      .copyWith(color: Colors.white),
+                ))
+          ]),
+        ),
+      ),
       body: ListView(children: [
         CarouselSlider(
             options: CarouselOptions(
@@ -71,6 +90,22 @@ class ProductScreen extends StatelessWidget {
                   ),
                 ),
               ),
+            ],
+          ),
+        ),
+        //TODO need to add buttons for clothing sizes
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: ExpansionTile(
+            initiallyExpanded: true,
+            title: Text('Product Information',
+                style: Theme.of(context).textTheme.headline3),
+            children: [
+              ListTile(
+                title: Text(
+                    'This is a testing text for the product description!',
+                    style: Theme.of(context).textTheme.bodyText1),
+              )
             ],
           ),
         ),
