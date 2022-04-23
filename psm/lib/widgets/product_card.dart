@@ -5,20 +5,29 @@ import '../models/models.dart';
 class ProductCard extends StatelessWidget {
   final Product product;
   final double widthFactor;
+  final double leftPosition;
+  final bool isWishList;
 
-  const ProductCard({Key? key, required this.product, this.widthFactor = 2.5})
-      : super(key: key);
+  const ProductCard({
+    Key? key,
+    required this.product,
+    this.widthFactor = 2.5,
+    this.leftPosition = 5,
+    this.isWishList = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final double widthValue = MediaQuery.of(context).size.width / widthFactor;
+
     return InkWell(
       onTap: () {
         Navigator.pushNamed(context, '/product', arguments: product);
       },
       child: Stack(
-        children: [
+        children: <Widget>[
           Container(
-            width: MediaQuery.of(context).size.width / widthFactor,
+            width: widthValue,
             height: 150,
             child: Image.network(
               product.imageUrl,
@@ -27,8 +36,9 @@ class ProductCard extends StatelessWidget {
           ),
           Positioned(
             top: 60,
+            left: leftPosition,
             child: Container(
-              width: MediaQuery.of(context).size.width / widthFactor,
+              width: widthValue - 5 - leftPosition,
               height: 80,
               decoration: BoxDecoration(
                 color: Colors.black.withAlpha(50),
@@ -37,9 +47,9 @@ class ProductCard extends StatelessWidget {
           ),
           Positioned(
             top: 65,
-            left: 5,
+            left: leftPosition + 5,
             child: Container(
-              width: MediaQuery.of(context).size.width / widthFactor - 10,
+              width: widthValue - 15 - leftPosition,
               height: 70,
               decoration: BoxDecoration(
                 color: Colors.black,
@@ -77,7 +87,16 @@ class ProductCard extends StatelessWidget {
                         icon: Icon(Icons.add_circle),
                         color: Colors.white,
                       ),
-                    )
+                    ),
+                    isWishList
+                        ? Expanded(
+                            child: IconButton(
+                              onPressed: () {},
+                              icon: Icon(Icons.delete),
+                              color: Colors.white,
+                            ),
+                          )
+                        : SizedBox(),
                   ],
                 ),
               ),
