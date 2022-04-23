@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:psm/models/catagory_model.dart';
+import 'package:psm/models/models.dart';
 
 import '../../widgets/widgets.dart';
 
@@ -37,7 +38,8 @@ class HomeScreen extends StatelessWidget {
                 .map((category) => HeroCarouselCard(category: category))
                 .toList(),
           )),
-          SectionTitle(title: 'RECOMMENDED')
+          SectionTitle(title: 'RECOMMENDED'),
+          ProductCard(product: Product.products[0],)
         ],
       ),
     );
