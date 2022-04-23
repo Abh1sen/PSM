@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:psm/models/models.dart';
+import 'package:psm/widgets/hero_carousel_card.dart';
 
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
@@ -25,6 +26,9 @@ class ProductScreen extends StatelessWidget {
         title: product.name,
       ),
       bottomNavigationBar: CustomBottomAppBar(),
+      body: HeroCarouselCard(
+        product: product,
+      ),
     );
   }
 }
