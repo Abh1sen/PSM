@@ -38,8 +38,16 @@ class HomeScreen extends StatelessWidget {
                 .map((category) => HeroCarouselCard(category: category))
                 .toList(),
           )),
+          SectionTitle(title: 'POPULAR'),
+          ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isPopular)
+                  .toList()),
           SectionTitle(title: 'RECOMMENDED'),
-          ProductCard(product: Product.products[0],)
+          ProductCarousel(
+              products: Product.products
+                  .where((product) => product.isRecommended)
+                  .toList()),
         ],
       ),
     );
