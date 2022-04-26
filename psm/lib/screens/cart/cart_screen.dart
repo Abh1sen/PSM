@@ -56,17 +56,38 @@ class CartProductCard extends StatelessWidget {
         SizedBox(
           width: 10,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                product.name,
+                style: Theme.of(context).textTheme.headline5,
+              ),
+              Text(
+                'Rp${product.price}',
+                style: Theme.of(context).textTheme.headline6,
+              )
+            ],
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+        Row(
           children: [
-            Text(
-              product.name,
-              style: Theme.of(context).textTheme.headline5,
+            IconButton(
+              icon: Icon(Icons.add_circle),
+              onPressed: () {},
             ),
             Text(
-              'Rp${product.price}',
-              style: Theme.of(context).textTheme.headline6,
-            )
+              '1',
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            IconButton(
+              icon: Icon(Icons.remove_circle),
+              onPressed: () {},
+            ),
           ],
         )
       ],
