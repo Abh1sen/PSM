@@ -53,6 +53,22 @@ class CartProductCard extends StatelessWidget {
           height: 80,
           fit: BoxFit.cover,
         ),
+        SizedBox(
+          width: 10,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              product.name,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            Text(
+              'Rp${product.price}',
+              style: Theme.of(context).textTheme.headline6,
+            )
+          ],
+        )
       ],
     );
   }
