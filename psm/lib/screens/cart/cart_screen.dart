@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psm/models/cart_model.dart';
 
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
@@ -48,14 +49,15 @@ class CartScreen extends StatelessWidget {
                 SizedBox(
                   height: 5.0,
                 ),
-                CartProductCard(
-                  product: Product.products[0],
-                ),
-                CartProductCard(
-                  product: Product.products[1],
-                ),
-                CartProductCard(
-                  product: Product.products[2],
+                SizedBox(
+                  height: 400,
+                  child: ListView.builder(
+                      itemCount: Cart().products.length,
+                      itemBuilder: (context, index) {
+                        return CartProductCard(
+                          product: Cart().products[index],
+                        );
+                      }),
                 ),
               ],
             ),
