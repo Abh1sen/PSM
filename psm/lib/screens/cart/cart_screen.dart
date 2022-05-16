@@ -82,7 +82,7 @@ class CartScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline3,
                           ),
                           Text(
-                            'Rp100000',
+                            'Rp${Cart().subtotalString}',
                             style: Theme.of(context).textTheme.headline3,
                           )
                         ],
