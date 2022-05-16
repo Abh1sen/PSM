@@ -47,7 +47,14 @@ class CartScreen extends StatelessWidget {
             Column(
               children: [
                 SizedBox(
-                  height: 5.0,
+                  height: 10.0,
+                ),
+                Text(
+                  Cart().freedeliveryString,
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
                 SizedBox(
                   height: 400,
@@ -98,7 +105,7 @@ class CartScreen extends StatelessWidget {
                             style: Theme.of(context).textTheme.headline3,
                           ),
                           Text(
-                            'Rp80000',
+                            'Rp${Cart().deliveryfeeString}',
                             style: Theme.of(context).textTheme.headline3,
                           )
                         ],
@@ -135,7 +142,7 @@ class CartScreen extends StatelessWidget {
                                   .copyWith(color: Colors.white),
                             ),
                             Text(
-                              'Rp180000',
+                              'Rp${Cart().totalString}',
                               style: Theme.of(context)
                                   .textTheme
                                   .headline3!
