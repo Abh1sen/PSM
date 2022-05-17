@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psm/blocs/cart/bloc/cart_bloc.dart';
 import 'package:psm/blocs/wishlist/bloc/wishlist_bloc.dart';
 import 'package:psm/config/app_router.dart';
 import 'package:psm/config/theme.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishList())),
+        BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
       ],
       child: MaterialApp(
         title: 'Haseena',

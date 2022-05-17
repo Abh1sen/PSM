@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/models/cart_model.dart';
 
+import '../../blocs/cart/bloc/cart_bloc.dart';
 import '../../models/models.dart';
 import '../../widgets/widgets.dart';
 
@@ -17,148 +19,169 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(
-        title: 'Cart',
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        child: Container(
-          height: 70,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.black),
-                onPressed: () {},
-                child: Text(
-                  'CHECKOUT',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3!
-                      .copyWith(color: Colors.white),
-                ))
-          ]),
+        appBar: CustomAppBar(
+          title: 'Cart',
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                  Cart().freedeliveryString,
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                SizedBox(
-                  height: 400,
-                  child: ListView.builder(
-                      itemCount: Cart().products.length,
-                      itemBuilder: (context, index) {
-                        return CartProductCard(
-                          product: Cart().products[index],
-                        );
-                      }),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Divider(
-                  thickness: 3.0,
-                ),
-                SizedBox(
-                  height: 5.0,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'SUBTOTAL ',
-                            style: Theme.of(context).textTheme.headline3,
-                          ),
-                          Text(
-                            'Rp${Cart().subtotalString}',
-                            style: Theme.of(context).textTheme.headline3,
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'DELIVERY ',
-                            style: Theme.of(context).textTheme.headline3,
-                          ),
-                          Text(
-                            'Rp${Cart().deliveryfeeString}',
-                            style: Theme.of(context).textTheme.headline3,
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                Stack(
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child: Container(
+            height: 70,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(primary: Colors.black),
+                      onPressed: () {},
+                      child: Text(
+                        'CHECKOUT',
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline3!
+                            .copyWith(color: Colors.white),
+                      ))
+                ]),
+          ),
+        ),
+        body: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+            if (state is CartLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is CartLoaded) {
+              return Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: Colors.black.withAlpha(50),
-                      ),
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          state.cart.freedeliveryString,
+                          style: Theme.of(context).textTheme.headline5,
+                        ),
+                        SizedBox(
+                          height: 20.0,
+                        ),
+                        SizedBox(
+                          height: 400,
+                          child: ListView.builder(
+                              itemCount: state.cart.products.length,
+                              itemBuilder: (context, index) {
+                                return CartProductCard(
+                                  product: state.cart.products[index],
+                                );
+                              }),
+                        ),
+                      ],
                     ),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: const EdgeInsets.all(5.0),
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(13.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    Column(
+                      children: [
+                        Divider(
+                          thickness: 3.0,
+                        ),
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 10),
+                          child: Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'SUBTOTAL ',
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                  ),
+                                  Text(
+                                    'Rp${state.cart.subtotalString}',
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10.0,
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'DELIVERY ',
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                  ),
+                                  Text(
+                                    'Rp${state.cart.deliveryfeeString}',
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        Stack(
                           children: [
-                            Text(
-                              'TOTAL ',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(color: Colors.white),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Colors.black.withAlpha(50),
+                              ),
                             ),
-                            Text(
-                              'Rp${Cart().totalString}',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .headline3!
-                                  .copyWith(color: Colors.white),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              margin: const EdgeInsets.all(5.0),
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(13.0),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'TOTAL ',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline3!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                    Text(
+                                      'Rp${state.cart.totalString}',
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .headline3!
+                                          .copyWith(color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                              ),
                             )
                           ],
-                        ),
-                      ),
-                    )
+                        )
+                      ],
+                    ),
                   ],
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
+                ),
+              );
+            } else {
+              return Text('Something went wrong');
+            }
+          },
+        ));
   }
 }

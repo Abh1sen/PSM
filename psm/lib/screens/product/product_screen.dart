@@ -5,6 +5,7 @@ import 'package:psm/blocs/wishlist/bloc/wishlist_bloc.dart';
 import 'package:psm/models/models.dart';
 import 'package:psm/widgets/hero_carousel_card.dart';
 
+import '../../blocs/cart/bloc/cart_bloc.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
 
@@ -49,16 +50,23 @@ class ProductScreen extends StatelessWidget {
                     icon: Icon(Icons.favorite));
               },
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.black),
-                onPressed: () {},
-                child: Text(
-                  'ADD TO CART',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3!
-                      .copyWith(color: Colors.white),
-                ))
+            BlocBuilder<CartBloc, CartState>(
+              builder: (context, state) {
+                return ElevatedButton(
+                    style: ElevatedButton.styleFrom(primary: Colors.black),
+                    onPressed: () {
+                      context.read<CartBloc>().add(CartProductAdded(product));
+                      Navigator.pushNamed(context, '/cart');
+                    },
+                    child: Text(
+                      'ADD TO CART',
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline3!
+                          .copyWith(color: Colors.white),
+                    ));
+              },
+            )
           ]),
         ),
       ),
