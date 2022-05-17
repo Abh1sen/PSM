@@ -1,5 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+
+import '../../../models/models.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';
