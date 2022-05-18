@@ -97,6 +97,11 @@ class ProductCard extends StatelessWidget {
                                 context
                                     .read<CartBloc>()
                                     .add(CartProductAdded(product));
+
+                                final snackBar = SnackBar(
+                                    content: Text('Added to Cart!'));
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
                               },
                               icon: Icon(Icons.add_circle),
                               color: Colors.white,
