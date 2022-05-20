@@ -4,7 +4,7 @@ import 'package:psm/blocs/cart/bloc/cart_bloc.dart';
 import 'package:psm/blocs/wishlist/bloc/wishlist_bloc.dart';
 import 'package:psm/config/app_router.dart';
 import 'package:psm/config/theme.dart';
-import 'package:psm/screens/home/home_screen.dart';
+import 'package:psm/screens/screens.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         title: 'Haseena',
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: HomeScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }
