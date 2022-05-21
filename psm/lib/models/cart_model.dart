@@ -41,4 +41,18 @@ class Cart extends Equatable {
 
   @override
   List<Object?> get props => [products];
+
+  Map productQuantity(products) {
+    var quantity = Map();
+
+    products.forEach((product) {
+      if (!quantity.containsKey(product)) {
+        quantity[product] = 1;
+      } else {
+        quantity[product] += 1;
+      }
+    });
+
+    return quantity;
+  }
 }
