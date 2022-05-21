@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/cart/bloc/cart_bloc.dart';
@@ -6,7 +7,9 @@ import 'package:psm/config/app_router.dart';
 import 'package:psm/config/theme.dart';
 import 'package:psm/screens/screens.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "359998674969",
+    "project_id": "haseena-a0b2e",
+    "storage_bucket": "haseena-a0b2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:359998674969:android:944f72897af3ef801b7288",
+        "android_client_info": {
+          "package_name": "com.example.psm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "359998674969-moj5mafeu6l62uofk3b4q2shtbpdugam.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvlDeFLs3n3aA911zw3Bb1lHjusUeROL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "359998674969-moj5mafeu6l62uofk3b4q2shtbpdugam.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
