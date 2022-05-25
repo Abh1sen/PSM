@@ -5,6 +5,7 @@ import 'package:psm/blocs/category/category_bloc.dart';
 import 'package:psm/models/catagory_model.dart';
 import 'package:psm/models/models.dart';
 
+import '../../blocs/product/product_bloc.dart';
 import '../../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -53,15 +54,41 @@ class HomeScreen extends StatelessWidget {
             },
           )),
           SectionTitle(title: 'POPULAR'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isPopular)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isPopular)
+                        .toList());
+              } else {
+                return Text('Oops looks like something went wrong.');
+              }
+            },
+          ),
           SectionTitle(title: 'RECOMMENDED'),
-          ProductCarousel(
-              products: Product.products
-                  .where((product) => product.isRecommended)
-                  .toList()),
+          BlocBuilder<ProductBloc, ProductState>(
+            builder: (context, state) {
+              if (state is ProductLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is ProductLoaded) {
+                return ProductCarousel(
+                    products: state.products
+                        .where((product) => product.isRecommended)
+                        .toList());
+              } else {
+                return Text('Oops looks like something went wrong.');
+              }
+            },
+          ),
         ],
       ),
     );

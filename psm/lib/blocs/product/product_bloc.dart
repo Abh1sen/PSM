@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:psm/models/catagory_model.dart';
-import 'package:psm/repositories/Product/Product_repository.dart';
+import 'package:psm/repositories/product/product_repository.dart';
 
 import '../../models/product_model.dart';
 
@@ -39,8 +39,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             ));
   }
 
-  Stream<ProductState> _mapUpdateproductsToState(
-      UpdateProducts event) async* {
+  Stream<ProductState> _mapUpdateproductsToState(UpdateProducts event) async* {
     yield ProductLoaded(products: event.products);
   }
 }
