@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Category extends Equatable {
@@ -11,6 +12,13 @@ class Category extends Equatable {
 
   @override
   List<Object?> get props => [name, imageUrl];
+
+  static Category fromSnapshot(DocumentSnapshot snap) {
+    Category category =
+        Category(name: snap['name'], imageUrl: snap['imageUrl']);
+    return category;
+  }
+
   //TODO will need to swap assets with company approved ones
   static List<Category> categories = [
     Category(
@@ -20,7 +28,7 @@ class Category extends Equatable {
     Category(
         name: 'HomeDress',
         imageUrl:
-            'https://loqalindonesia.com/wp-content/uploads/2020/12/DASTER-RENDA-SERUT-SLETING-1-FILEminimizer.jpg'),
+            'https://s1.bukalapak.com/img/6838424321/w-1000/batik_sikak_daun_sirih_baju_daster_wanita_tidur_hamil_muslim.jpg'),
     Category(
         name: 'Tunic',
         imageUrl:

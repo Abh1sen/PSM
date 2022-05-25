@@ -1,7 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class Product extends Equatable {
-
   //TODO add sizes
 
   final String name;
@@ -23,6 +23,17 @@ class Product extends Equatable {
   @override
   List<Object?> get props =>
       [name, category, imageUrl, price, isRecommended, isPopular];
+
+  static Product fromSnapshot(DocumentSnapshot snap) {
+    Product product = Product(
+        name: snap['name'],
+        category: snap['category'],
+        imageUrl: snap['imageUrl'],
+        price: snap['price'],
+        isRecommended: snap['isRecommended'],
+        isPopular: snap['isPopular']);
+    return product;
+  }
 
   static List<Product> products = [
     //TODO add sample products
@@ -62,7 +73,7 @@ class Product extends Equatable {
         name: 'HomeDress 2',
         category: 'HomeDress',
         imageUrl:
-            'https://loqalindonesia.com/wp-content/uploads/2020/12/DASTER-RENDA-SERUT-SLETING-1-FILEminimizer.jpg',
+            'https://s1.bukalapak.com/img/6838424321/w-1000/batik_sikak_daun_sirih_baju_daster_wanita_tidur_hamil_muslim.jpg',
         price: 30000.0,
         isRecommended: false,
         isPopular: true),
