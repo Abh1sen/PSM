@@ -1,5 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:psm/blocs/category/category_bloc.dart';
 import 'package:psm/models/catagory_model.dart';
 import 'package:psm/models/models.dart';
 
@@ -24,19 +26,31 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: CustomBottomAppBar(),
       body: Column(
         children: [
-          Container(
-              child: CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 1.5,
-              viewportFraction: 0.85,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
-              enableInfiniteScroll: false,
-              autoPlay: true,
-            ),
-            items: Category.categories
-                .map((category) => HeroCarouselCard(category: category))
-                .toList(),
+          Container(child: BlocBuilder<CategoryBloc, CategoryState>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              if (state is CategoryLoaded) {
+                return CarouselSlider(
+                  options: CarouselOptions(
+                    aspectRatio: 1.5,
+                    viewportFraction: 0.85,
+                    enlargeCenterPage: true,
+                    enlargeStrategy: CenterPageEnlargeStrategy.height,
+                    enableInfiniteScroll: false,
+                    autoPlay: true,
+                  ),
+                  items: Category.categories
+                      .map((category) => HeroCarouselCard(category: category))
+                      .toList(),
+                );
+              } else {
+                return Text('Oops looks like something went wrong.');
+              }
+            },
           )),
           SectionTitle(title: 'POPULAR'),
           ProductCarousel(
