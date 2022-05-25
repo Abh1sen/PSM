@@ -29,5 +29,16 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     }
   }
 
-  
+  Stream<CategoryState> _mapLoadCategoriesToState() async* {
+    _categorySubscription?.cancel();
+    _categorySubscription =
+        _categoryRepository.getAllCategories().listen((categories) => add(
+              UpdateCategories(categories),
+            ));
+  }
+
+  Stream<CategoryState> _mapUpdateCategoriesToState(
+      UpdateCategories event) async* {
+    yield CategoryLoaded(categories: event.categories);
+  }
 }
