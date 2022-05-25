@@ -7,7 +7,7 @@ class Product extends Equatable {
   final String name;
   final String category;
   final String imageUrl;
-  final double price;
+  final int price;
   final bool isRecommended;
   final bool isPopular;
 
@@ -43,7 +43,7 @@ class Product extends Equatable {
         name: 'Mukena 1',
         category: 'Mukena',
         imageUrl: 'https://fikashop.com/wp-content/uploads/2020/03/m034-1.jpeg',
-        price: 50000.0,
+        price: 50000,
         isRecommended: true,
         isPopular: true),
     Product(
@@ -51,14 +51,14 @@ class Product extends Equatable {
         category: 'Mukena',
         imageUrl:
             'https://s4.bukalapak.com/img/4778080082/w-1000/MUKENA_AQILLA_EXTRA_JUMBO_.jpg',
-        price: 50000.0,
+        price: 50000,
         isRecommended: true,
         isPopular: false),
     Product(
         name: 'Mukena 3',
         category: 'Mukena',
         imageUrl: 'https://cdn.elevenia.co.id/g/7/2/9/1/0/3/28729103_B.jpg',
-        price: 50000.0,
+        price: 50000,
         isRecommended: false,
         isPopular: false),
     Product(
@@ -66,7 +66,7 @@ class Product extends Equatable {
         category: 'HomeDress',
         imageUrl:
             'https://th.bing.com/th/id/OIP.bi3F4YemopeBeIO_tt1bIQHaHa?pid=ImgDet&rs=1',
-        price: 30000.0,
+        price: 30000,
         isRecommended: true,
         isPopular: false),
     Product(
@@ -74,7 +74,7 @@ class Product extends Equatable {
         category: 'HomeDress',
         imageUrl:
             'https://s1.bukalapak.com/img/6838424321/w-1000/batik_sikak_daun_sirih_baju_daster_wanita_tidur_hamil_muslim.jpg',
-        price: 30000.0,
+        price: 30000,
         isRecommended: false,
         isPopular: true),
   ];
