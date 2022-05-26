@@ -33,41 +33,15 @@ class ProductScreen extends StatelessWidget {
         color: Colors.white,
         child: Container(
           height: 70,
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-            BlocBuilder<WishlistBloc, WishlistState>(
-              builder: (context, state) {
-                return IconButton(
-                    onPressed: () {
-                      context
-                          .read<WishlistBloc>()
-                          .add(AddWishListProduct(product));
-
-                      final snackBar =
-                          SnackBar(content: Text('Added to Wishlist!'));
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    },
-                    icon: Icon(Icons.favorite));
-              },
-            ),
-            BlocBuilder<CartBloc, CartState>(
-              builder: (context, state) {
-                return ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.black),
-                    onPressed: () {
-                      context.read<CartBloc>().add(CartProductAdded(product));
-                      Navigator.pushNamed(context, '/cart');
-                    },
-                    child: Text(
-                      'ADD TO CART',
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline3!
-                          .copyWith(color: Colors.white),
-                    ));
-              },
-            )
-          ]),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomBottomAppBar(
+                screen: '/product',
+                product: product,
+              )
+            ],
+          ),
         ),
       ),
       body: ListView(children: [

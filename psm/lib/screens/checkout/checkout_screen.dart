@@ -20,7 +20,6 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Timer(Duration(seconds: 2), () => Navigator.popAndPushNamed(context, '/'));
     return Scaffold(
       appBar: CustomAppBar(title: 'Checkout'),
       bottomNavigationBar: CustomBottomAppBar(screen: routeName),
