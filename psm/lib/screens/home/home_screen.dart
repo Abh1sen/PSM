@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
       appBar: CustomAppBar(
         title: 'Haseena',
       ),
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: CustomBottomAppBar(screen: routeName),
       body: Column(
         children: [
           Container(child: BlocBuilder<CategoryBloc, CategoryState>(

@@ -23,7 +23,7 @@ class CheckoutScreen extends StatelessWidget {
     Timer(Duration(seconds: 2), () => Navigator.popAndPushNamed(context, '/'));
     return Scaffold(
       appBar: CustomAppBar(title: 'Checkout'),
-      bottomNavigationBar: CustomBottomAppBar(),
+      bottomNavigationBar: CustomBottomAppBar(screen: routeName),
       body: Container(),
     );
   }
