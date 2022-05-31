@@ -41,6 +41,7 @@ class CheckoutScreen extends StatelessWidget {
                 'CUSTOMER INFO',
                 style: Theme.of(context).textTheme.headline3,
               ),
+              _buildTextFormField(emailController, context, 'Email'),
               Text(
                 'DELIVERY',
                 style: Theme.of(context).textTheme.headline3,
@@ -52,6 +53,33 @@ class CheckoutScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Padding _buildTextFormField(TextEditingController controller,
+      BuildContext context, String labelText) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          SizedBox(
+              width: 75,
+              child: Text(
+                labelText,
+                style: Theme.of(context).textTheme.bodyText1,
+              )),
+          Expanded(
+            child: TextFormField(
+              controller: controller,
+              decoration: InputDecoration(
+                  isDense: true,
+                  contentPadding: const EdgeInsets.only(left: 10),
+                  focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black))),
+            ),
+          )
+        ],
       ),
     );
   }
