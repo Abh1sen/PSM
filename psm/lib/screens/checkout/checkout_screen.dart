@@ -42,10 +42,15 @@ class CheckoutScreen extends StatelessWidget {
                 style: Theme.of(context).textTheme.headline3,
               ),
               _buildTextFormField(emailController, context, 'Email'),
+              _buildTextFormField(nameController, context, 'Name'),
               Text(
                 'DELIVERY',
                 style: Theme.of(context).textTheme.headline3,
               ),
+              _buildTextFormField(addressController, context, 'Address'),
+              _buildTextFormField(cityController, context, 'City'),
+              _buildTextFormField(countryController, context, 'Country'),
+              _buildTextFormField(zipCodeController, context, 'Zipcode'),
               Text(
                 'ORDER SUMMARY',
                 style: Theme.of(context).textTheme.headline3,
