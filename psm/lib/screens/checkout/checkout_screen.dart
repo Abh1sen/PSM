@@ -20,10 +20,39 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController addressController = TextEditingController();
+    final TextEditingController cityController = TextEditingController();
+    final TextEditingController countryController = TextEditingController();
+    final TextEditingController zipCodeController = TextEditingController();
+
     return Scaffold(
       appBar: CustomAppBar(title: 'Checkout'),
       bottomNavigationBar: CustomBottomAppBar(screen: routeName),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'CUSTOMER INFO',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(
+                'DELIVERY',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+              Text(
+                'ORDER SUMMARY',
+                style: Theme.of(context).textTheme.headline3,
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
