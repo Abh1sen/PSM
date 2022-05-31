@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         title: 'Haseena',
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
-        initialRoute: CheckoutScreen.routeName,
+        initialRoute: SplashScreen.routeName,
       ),
     );
   }

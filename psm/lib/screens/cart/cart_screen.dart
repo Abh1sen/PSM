@@ -23,24 +23,7 @@ class CartScreen extends StatelessWidget {
           title: 'Cart',
         ),
         bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          child: Container(
-            height: 70,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(primary: Colors.black),
-                      onPressed: () {},
-                      child: Text(
-                        'CHECKOUT',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline3!
-                            .copyWith(color: Colors.white),
-                      ))
-                ]),
-          ),
+          child: CustomBottomAppBar(screen: '/cart'),
         ),
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
