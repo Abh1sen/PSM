@@ -30,18 +30,9 @@ class ProductScreen extends StatelessWidget {
         title: product.name,
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white,
-        child: Container(
-          height: 70,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              CustomBottomAppBar(
-                screen: '/product',
-                product: product,
-              )
-            ],
-          ),
+        child: CustomBottomAppBar(
+          screen: '/product',
+          product: product,
         ),
       ),
       body: ListView(children: [
