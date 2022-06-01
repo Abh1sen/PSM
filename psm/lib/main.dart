@@ -25,13 +25,13 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => WishlistBloc()..add(StartWishList())),
+        BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
         BlocProvider(
           create: (context) => CheckoutBloc(
             cartBloc: context.read<CartBloc>(),
             checkoutRepository: CheckoutRepository(),
           ),
         ),
-        BlocProvider(create: (_) => CartBloc()..add(CartStarted())),
         BlocProvider(
           create: (_) => CategoryBloc(
             categoryRepository: CategoryRepository(),
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Haseena',
+        debugShowCheckedModeBanner: false,
         theme: theme(),
         onGenerateRoute: AppRouter.onGenerateRoute,
         initialRoute: SplashScreen.routeName,

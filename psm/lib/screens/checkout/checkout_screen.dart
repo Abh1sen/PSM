@@ -53,7 +53,7 @@ class CheckoutScreen extends StatelessWidget {
                       context
                           .read<CheckoutBloc>()
                           .add(UpdateCheckout(fullName: value));
-                    }, context, 'Name'),
+                    }, context, 'Full Name'),
                     Text(
                       'DELIVERY',
                       style: Theme.of(context).textTheme.headline3,
