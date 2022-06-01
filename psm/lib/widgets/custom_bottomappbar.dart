@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/cart/bloc/cart_bloc.dart';
+import 'package:psm/blocs/checkout/checkout_bloc.dart';
 
 import '../blocs/wishlist/bloc/wishlist_bloc.dart';
 import '../models/models.dart';
@@ -135,19 +136,36 @@ class CustomBottomAppBar extends StatelessWidget {
 
   List<Widget> _buildOrderNowNavBar(context) {
     return [
-      ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          primary: Colors.black,
-          shape: RoundedRectangleBorder(),
-        ),
-        child: Text(
-          'ORDER NOW',
-          style: Theme.of(context)
-              .textTheme
-              .headline3!
-              .copyWith(color: Colors.white),
-        ),
+      BlocBuilder<CheckoutBloc, CheckoutState>(
+        builder: (context, state) {
+          if (state is CheckoutLoading) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is CheckoutLoaded) {
+            return ElevatedButton(
+              onPressed: () {
+                context
+                    .read<CheckoutBloc>()
+                    .add(ConfirmCheckout(checkout: state.checkout));
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black,
+                shape: RoundedRectangleBorder(),
+              ),
+              child: Text(
+                'ORDER NOW',
+                style: Theme.of(context)
+                    .textTheme
+                    .headline3!
+                    .copyWith(color: Colors.white),
+              ),
+            );
+          } else {
+            return Text('Oops! Something went wrong! :(');
+          }
+        },
       ),
     ];
   }

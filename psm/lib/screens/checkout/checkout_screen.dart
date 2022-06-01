@@ -45,17 +45,39 @@ class CheckoutScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.headline3,
                     ),
                     _buildTextFormField((value) {
-                      context.read<CheckoutBloc>().add(UpdateCheckout());
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(email: value));
                     }, context, 'Email'),
-                    _buildTextFormField(nameController, context, 'Name'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(fullName: value));
+                    }, context, 'Name'),
                     Text(
                       'DELIVERY',
                       style: Theme.of(context).textTheme.headline3,
                     ),
-                    _buildTextFormField(addressController, context, 'Address'),
-                    _buildTextFormField(cityController, context, 'City'),
-                    _buildTextFormField(countryController, context, 'Country'),
-                    _buildTextFormField(zipCodeController, context, 'Zipcode'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(address: value));
+                    }, context, 'Address'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(city: value));
+                    }, context, 'City'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(country: value));
+                    }, context, 'Country'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
+                          .add(UpdateCheckout(zipCode: value));
+                    }, context, 'Zipcode'),
                     SizedBox(height: 20),
                     Container(
                       width: MediaQuery.of(context).size.width,
