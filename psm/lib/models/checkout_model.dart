@@ -28,15 +28,33 @@ class Checkout extends Equatable {
 
   @override
   List<Object?> get props => [
-    fullName,
-    email,
-    address,
-    city,
-    country,
-    zipCode,
-    products,
-    subtotal,
-    deliveryFee,
-    total,
-  ];
+        fullName,
+        email,
+        address,
+        city,
+        country,
+        zipCode,
+        products,
+        subtotal,
+        deliveryFee,
+        total,
+      ];
+
+  Map<String, Object> toDocument() {
+    Map customerAddress = Map();
+    customerAddress['address'] = address;
+    customerAddress['city'] = city;
+    customerAddress['country'] = country;
+    customerAddress['zipCode'] = zipCode;
+
+    return {
+      'customerAddress': customerAddress,
+      'customerName': fullName!,
+      'customerEmal':email!,
+      'products':products!.map((product) => product.name).toList(),
+      'subtotal':subtotal!,
+      'deliveryFee':deliveryFee!,
+      'total':total!
+    };
+  }
 }
