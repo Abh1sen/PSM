@@ -74,7 +74,7 @@ class CustomBottomAppBar extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/user');
+            Navigator.pushNamed(context, '/login');
           }),
     ];
   }
