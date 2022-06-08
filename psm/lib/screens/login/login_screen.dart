@@ -38,14 +38,39 @@ class LoginScreen extends StatelessWidget {
               'Insert Haseena Heart Logo Here',
               style: Theme.of(context).textTheme.headline3,
             ),
-            SizedBox(height: 30,),
-            //todo Please create the blocs for the login as currently still in checkout bloc
+            SizedBox(
+              height: 30,
+            ),
+            //todo Please create the blocs and model for the login as currently still in checkout bloc
             _buildTextFormField((value) {
               context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
             }, context, 'Email'),
             _buildTextFormField((value) {
               context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
             }, context, 'Password'),
+            SizedBox(
+              height: 30,
+            ),
+            Text(
+              'Don\'t have an account?',
+              style: Theme.of(context).textTheme.headline3,
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            //todo Please create the blocs and model for the registration as currently still in checkout bloc
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.black),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: Text(
+                  'Register Now',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3!
+                      .copyWith(color: Colors.white),
+                ))
           ],
         ),
       ),
