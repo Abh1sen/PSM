@@ -10,13 +10,13 @@ import '../../models/models.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
 
-class LoginScreen extends StatelessWidget {
-  static const String routeName = '/login';
+class RegistrationScreen extends StatelessWidget {
+  static const String routeName = '/registration';
 
   static Route route() {
     return MaterialPageRoute(
       settings: RouteSettings(name: routeName),
-      builder: (context) => LoginScreen(),
+      builder: (context) => RegistrationScreen(),
     );
   }
 
@@ -26,7 +26,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController passwordController = TextEditingController();
 
     return Scaffold(
-      appBar: CustomAppBar(title: 'Login'),
+      appBar: CustomAppBar(title: 'Registration'),
       bottomNavigationBar: CustomBottomAppBar(screen: routeName),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -48,24 +48,14 @@ class LoginScreen extends StatelessWidget {
             _buildTextFormField((value) {
               context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
             }, context, 'Password'),
-            SizedBox(
-              height: 30,
-            ),
-            Text(
-              'Don\'t have an account?',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            //todo Please create the blocs and model for the registration as currently still in checkout bloc
+            SizedBox(height:30),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(primary: Colors.black),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/registration');
+                  Navigator.pushNamed(context, '/');
                 },
                 child: Text(
-                  'Register Now',
+                  'Create the Account',
                   style: Theme.of(context)
                       .textTheme
                       .headline3!

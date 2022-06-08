@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:psm/models/catagory_model.dart';
 import 'package:psm/models/models.dart';
+import 'package:psm/screens/registration/registration_screen.dart';
 import 'package:psm/screens/screens.dart';
 
 class AppRouter {
@@ -26,6 +27,8 @@ class AppRouter {
         return CheckoutScreen.route();
       case LoginScreen.routeName:
         return LoginScreen.route();
+      case RegistrationScreen.routeName:
+        return RegistrationScreen.route();
       default:
         return _errorRoute();
     }
