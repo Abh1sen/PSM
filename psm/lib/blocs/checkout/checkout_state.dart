@@ -22,21 +22,24 @@ class CheckoutLoaded extends CheckoutState {
   final String? deliveryFee;
   final String? total;
   final Checkout checkout;
+  final String? phoneNumber;
 
-  CheckoutLoaded({
-    this.fullName,
-    this.email,
-    this.address,
-    this.city,
-    this.country,
-    this.zipCode,
-    this.products,
-    this.subtotal,
-    this.deliveryFee,
-    this.total,
-  }) : checkout = Checkout(
+  CheckoutLoaded(
+      {this.fullName,
+      this.email,
+      this.address,
+      this.city,
+      this.country,
+      this.zipCode,
+      this.products,
+      this.subtotal,
+      this.deliveryFee,
+      this.total,
+      this.phoneNumber})
+      : checkout = Checkout(
           fullName: fullName,
           email: email,
+          phoneNumber: phoneNumber,
           address: address,
           city: city,
           country: country,
@@ -51,6 +54,7 @@ class CheckoutLoaded extends CheckoutState {
   List<Object?> get props => [
         fullName,
         email,
+        phoneNumber,
         address,
         city,
         country,

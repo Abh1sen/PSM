@@ -12,6 +12,7 @@ class Checkout extends Equatable {
   final String? subtotal;
   final String? deliveryFee;
   final String? total;
+  final String? phoneNumber;
 
   const Checkout({
     required this.fullName,
@@ -24,12 +25,14 @@ class Checkout extends Equatable {
     required this.subtotal,
     required this.deliveryFee,
     required this.total,
+    required this.phoneNumber,
   });
 
   @override
   List<Object?> get props => [
         fullName,
         email,
+        phoneNumber,
         address,
         city,
         country,
@@ -50,11 +53,12 @@ class Checkout extends Equatable {
     return {
       'customerAddress': customerAddress,
       'customerName': fullName!,
-      'customerEmal':email!,
-      'products':products!.map((product) => product.name).toList(),
-      'subtotal':subtotal!,
-      'deliveryFee':deliveryFee!,
-      'total':total!
+      'customerPhoneNumber': phoneNumber!,
+      'customerEmail': email!,
+      'products': products!.map((product) => product.name).toList(),
+      'subtotal': subtotal!,
+      'deliveryFee': deliveryFee!,
+      'total': total!
     };
   }
 }

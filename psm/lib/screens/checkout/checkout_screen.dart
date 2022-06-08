@@ -47,13 +47,18 @@ class CheckoutScreen extends StatelessWidget {
                     _buildTextFormField((value) {
                       context
                           .read<CheckoutBloc>()
+                          .add(UpdateCheckout(fullName: value));
+                    }, context, 'Full Name'),
+                    _buildTextFormField((value) {
+                      context
+                          .read<CheckoutBloc>()
                           .add(UpdateCheckout(email: value));
                     }, context, 'Email'),
                     _buildTextFormField((value) {
                       context
                           .read<CheckoutBloc>()
-                          .add(UpdateCheckout(fullName: value));
-                    }, context, 'Full Name'),
+                          .add(UpdateCheckout(phoneNumber: value));
+                    }, context, 'Phone Number'),
                     Text(
                       'DELIVERY',
                       style: Theme.of(context).textTheme.headline3,

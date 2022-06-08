@@ -59,6 +59,7 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
       yield CheckoutLoaded(
         email: event.email ?? state.email,
         fullName: event.fullName ?? state.fullName,
+        phoneNumber: event.phoneNumber ?? state.phoneNumber,
         products: event.cart?.products ?? state.products,
         deliveryFee: event.cart?.deliveryfeeString ?? state.deliveryFee,
         subtotal: event.cart?.subtotalString ?? state.subtotal,
