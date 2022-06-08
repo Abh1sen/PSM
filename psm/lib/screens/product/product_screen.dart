@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/wishlist/bloc/wishlist_bloc.dart';
 import 'package:psm/models/models.dart';
 import 'package:psm/widgets/hero_carousel_card.dart';
+import 'package:psm/widgets/widgets.dart';
 
 import '../../blocs/cart/bloc/cart_bloc.dart';
 import '../../widgets/custom_appbar.dart';
@@ -97,6 +98,10 @@ class ProductScreen extends StatelessWidget {
               )
             ],
           ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Center(child: SizeList()),
         ),
       ]),
     );
