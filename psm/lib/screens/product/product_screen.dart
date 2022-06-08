@@ -86,6 +86,10 @@ class ProductScreen extends StatelessWidget {
         //TODO need to add buttons for clothing sizes
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Center(child: SizeList()),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: ExpansionTile(
             initiallyExpanded: true,
             title: Text('Product Information',
@@ -98,10 +102,6 @@ class ProductScreen extends StatelessWidget {
               )
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Center(child: SizeList()),
         ),
       ]),
     );
