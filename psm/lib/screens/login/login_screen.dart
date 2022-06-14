@@ -41,13 +41,10 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            //todo Please create the blocs and model for the login as currently still in checkout bloc
-            _buildTextFormField((value) {
-              context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
-            }, context, 'Email'),
-            _buildTextFormField((value) {
-              context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
-            }, context, 'Password'),
+            reusableTextField(
+                "Enter UserName", Icons.person_outline, false, emailController),
+            reusableTextField(
+                "Enter Password", Icons.lock, true, passwordController),
             SizedBox(
               height: 30,
             ),
@@ -92,30 +89,30 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Padding _buildTextFormField(
-      Function(String)? onChanged, BuildContext context, String labelText) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          SizedBox(
-              width: 75,
-              child: Text(
-                labelText,
-                style: Theme.of(context).textTheme.bodyText1,
-              )),
-          Expanded(
-            child: TextFormField(
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: const EdgeInsets.only(left: 10),
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black))),
-            ),
-          )
-        ],
-      ),
-    );
-  }
+  // Padding _buildTextFormField(
+  //     Function(String)? onChanged, BuildContext context, String labelText) {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: Row(
+  //       children: [
+  //         SizedBox(
+  //             width: 75,
+  //             child: Text(
+  //               labelText,
+  //               style: Theme.of(context).textTheme.bodyText1,
+  //             )),
+  //         Expanded(
+  //           child: TextFormField(
+  //             onChanged: onChanged,
+  //             decoration: InputDecoration(
+  //                 isDense: true,
+  //                 contentPadding: const EdgeInsets.only(left: 10),
+  //                 focusedBorder: UnderlineInputBorder(
+  //                     borderSide: BorderSide(color: Colors.black))),
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }
