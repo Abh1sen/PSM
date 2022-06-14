@@ -11,7 +11,7 @@ import '../../models/models.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends StatelessWidget {
   static const String routeName = '/login';
 
   static Route route() {
@@ -21,12 +21,6 @@ class LoginScreen extends StatefulWidget {
     );
   }
 
-
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
@@ -34,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Login'),
-      bottomNavigationBar: CustomBottomAppBar(screen: LoginScreen.routeName),
+      bottomNavigationBar: CustomBottomAppBar(screen: routeName),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -72,7 +66,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // Padding _buildTextFormField(
   Row signUpOption(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -90,22 +83,6 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         )
       ],
-    );
-  }
-}
-
-class _AfterLoginScreenState extends State<LoginScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: ElevatedButton(
-          child: Text("Logout"),
-          onPressed: () {
-            Navigator.pushNamed(context, '/login');
-          },
-        ),
-      ),
     );
   }
 }
