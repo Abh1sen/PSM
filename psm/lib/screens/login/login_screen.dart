@@ -41,10 +41,16 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            reusableTextField(
-                "Enter UserName", Icons.person_outline, false, emailController),
-            reusableTextField(
-                "Enter Password", Icons.lock, true, passwordController),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: reusableTextField("Enter UserName", Icons.person_outline,
+                  false, emailController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: reusableTextField(
+                  "Enter Password", Icons.lock, true, passwordController),
+            ),
             SizedBox(
               height: 30,
             ),
