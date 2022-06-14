@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/checkout/checkout_bloc.dart';
 import 'package:psm/models/catagory_model.dart';
+import 'package:psm/screens/screens.dart';
 import 'package:psm/widgets/widgets.dart';
 
 import '../../models/models.dart';
@@ -58,26 +59,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            Text(
-              'Don\'t have an account?',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            //todo Please create the blocs and model for the registration as currently still in checkout bloc
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.black),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/registration');
-                },
-                child: Text(
-                  'Register Now',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3!
-                      .copyWith(color: Colors.white),
-                ))
+            signUpOption(context),
           ],
         ),
       ),
@@ -110,4 +92,23 @@ class LoginScreen extends StatelessWidget {
   //     ),
   //   );
   // }
+
+  Row signUpOption(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text("Don't have an account?",
+            style: TextStyle(color: Colors.black,fontSize: 14)),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, '/registration');
+          },
+          child: const Text(
+            " Register Now",
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 14),
+          ),
+        )
+      ],
+    );
+  }
 }
