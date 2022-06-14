@@ -24,6 +24,7 @@ class RegistrationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final TextEditingController usernameController = TextEditingController();
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Registration'),
@@ -41,55 +42,30 @@ class RegistrationScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            //todo Please create the blocs and model for the login as currently still in checkout bloc
-            _buildTextFormField((value) {
-              context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
-            }, context, 'Email'),
-            _buildTextFormField((value) {
-              context.read<CheckoutBloc>().add(UpdateCheckout(email: value));
-            }, context, 'Password'),
-            SizedBox(height:30),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.black),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/');
-                },
-                child: Text(
-                  'Create the Account',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline3!
-                      .copyWith(color: Colors.white),
-                ))
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: reusableTextField("Enter UserName", Icons.person_outline,
+                  false, usernameController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: reusableTextField(
+                  "Enter Email", Icons.mail_outline, false, emailController),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: reusableTextField(
+                  "Enter Password", Icons.lock, true, passwordController),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            firebaseUIButton(context, false, () {}),
+            SizedBox(
+              height: 30,
+            ),
           ],
         ),
-      ),
-    );
-  }
-
-  Padding _buildTextFormField(
-      Function(String)? onChanged, BuildContext context, String labelText) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          SizedBox(
-              width: 75,
-              child: Text(
-                labelText,
-                style: Theme.of(context).textTheme.bodyText1,
-              )),
-          Expanded(
-            child: TextFormField(
-              onChanged: onChanged,
-              decoration: InputDecoration(
-                  isDense: true,
-                  contentPadding: const EdgeInsets.only(left: 10),
-                  focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Colors.black))),
-            ),
-          )
-        ],
       ),
     );
   }
