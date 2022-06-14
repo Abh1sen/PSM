@@ -11,7 +11,7 @@ import '../../models/models.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   static const String routeName = '/login';
 
   static Route route() {
@@ -21,6 +21,12 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
@@ -28,7 +34,7 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Login'),
-      bottomNavigationBar: CustomBottomAppBar(screen: routeName),
+      bottomNavigationBar: CustomBottomAppBar(screen: LoginScreen.routeName),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -67,48 +73,39 @@ class LoginScreen extends StatelessWidget {
   }
 
   // Padding _buildTextFormField(
-  //     Function(String)? onChanged, BuildContext context, String labelText) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: Row(
-  //       children: [
-  //         SizedBox(
-  //             width: 75,
-  //             child: Text(
-  //               labelText,
-  //               style: Theme.of(context).textTheme.bodyText1,
-  //             )),
-  //         Expanded(
-  //           child: TextFormField(
-  //             onChanged: onChanged,
-  //             decoration: InputDecoration(
-  //                 isDense: true,
-  //                 contentPadding: const EdgeInsets.only(left: 10),
-  //                 focusedBorder: UnderlineInputBorder(
-  //                     borderSide: BorderSide(color: Colors.black))),
-  //           ),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
-
   Row signUpOption(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text("Don't have an account?",
-            style: TextStyle(color: Colors.black,fontSize: 14)),
+            style: TextStyle(color: Colors.black, fontSize: 14)),
         GestureDetector(
           onTap: () {
             Navigator.pushNamed(context, '/registration');
           },
           child: const Text(
             " Register Now",
-            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 14),
+            style: TextStyle(
+                color: Colors.red, fontWeight: FontWeight.bold, fontSize: 14),
           ),
         )
       ],
+    );
+  }
+}
+
+class _AfterLoginScreenState extends State<LoginScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ElevatedButton(
+          child: Text("Logout"),
+          onPressed: () {
+            Navigator.pushNamed(context, '/login');
+          },
+        ),
+      ),
     );
   }
 }

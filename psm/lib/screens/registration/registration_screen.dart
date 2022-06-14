@@ -60,7 +60,9 @@ class RegistrationScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            firebaseUIButton(context, false, () {}),
+            firebaseUIButton(context, false, () {
+              Navigator.pushNamed(context, '/');
+            }),
             SizedBox(
               height: 30,
             ),
