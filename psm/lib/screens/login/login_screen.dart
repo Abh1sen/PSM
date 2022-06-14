@@ -51,6 +51,21 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.black),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/');
+                },
+                child: Text(
+                  'Login',
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline3!
+                      .copyWith(color: Colors.white),
+                )),
+            SizedBox(
+              height: 30,
+            ),
             Text(
               'Don\'t have an account?',
               style: Theme.of(context).textTheme.headline3,
