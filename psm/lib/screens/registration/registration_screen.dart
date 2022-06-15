@@ -12,6 +12,7 @@ import 'package:psm/widgets/widgets.dart';
 import '../../models/models.dart';
 import '../../widgets/custom_appbar.dart';
 import '../../widgets/custom_bottomappbar.dart';
+import '../screens.dart';
 
 class RegistrationScreen extends StatelessWidget {
   static const String routeName = '/registration';
@@ -29,6 +30,7 @@ class RegistrationScreen extends StatelessWidget {
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController usernameController = TextEditingController();
     final bool isRegistration = false;
+    final snackBar = SnackBar(content: Text('Account Created!'));
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Registration'),
@@ -64,8 +66,9 @@ class RegistrationScreen extends StatelessWidget {
                       password: passwordController.text)
                   .then((value) {
                 print("Created New Account");
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => HomeScreen()));
+                    MaterialPageRoute(builder: (context) => AfterLoginScreen()));
               }).onError((error, stackTrace) {
                 print("Error ${error.toString()}");
               });

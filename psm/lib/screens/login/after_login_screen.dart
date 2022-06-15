@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/widgets.dart';
@@ -19,6 +20,9 @@ class AfterLoginScreen extends StatefulWidget {
 }
 
 class _AfterLoginScreenState extends State<AfterLoginScreen> {
+
+  final snackBar = SnackBar(content: Text('Logout Successful!'));
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +44,11 @@ class _AfterLoginScreenState extends State<AfterLoginScreen> {
                       fontSize: 16),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/login');
+                  FirebaseAuth.instance.signOut().then((value) {
+                    print("Signed Out");
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    Navigator.pushNamed(context, '/login');
+                  });
                 },
                 style: ButtonStyle(
                     backgroundColor:
