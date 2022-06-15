@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/checkout/checkout_bloc.dart';
@@ -26,6 +27,7 @@ class LoginScreen extends StatelessWidget {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final bool isLogin = true;
+    final snackBar = SnackBar(content: Text('Login Successful!'));
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Login'),
@@ -50,7 +52,20 @@ class LoginScreen extends StatelessWidget {
               height: 30,
             ),
             firebaseUIButton(context, isLogin, () {
-              Navigator.pushNamed(context, '/logout');
+              FirebaseAuth.instance
+                  .signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text)
+                  .then((value) {
+                print("Login is Successful");
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AfterLoginScreen()));
+              }).onError((error, stackTrace) {
+                print("Error ${error.toString()}");
+              });
             }),
             SizedBox(
               height: 30,
