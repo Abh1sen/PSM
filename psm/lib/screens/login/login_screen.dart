@@ -25,6 +25,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final bool isLogin = true;
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Login'),
@@ -35,13 +36,6 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Insert Haseena Heart Logo Here',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            SizedBox(
-              height: 30,
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: reusableTextField("Enter UserName", Icons.person_outline,
@@ -55,7 +49,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            firebaseUIButton(context, true, () {}),
+            firebaseUIButton(context, isLogin, () {}),
             SizedBox(
               height: 30,
             ),

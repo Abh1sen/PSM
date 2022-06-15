@@ -25,6 +25,7 @@ class RegistrationScreen extends StatelessWidget {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final TextEditingController usernameController = TextEditingController();
+    final bool isRegistration = false;
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Registration'),
@@ -35,13 +36,6 @@ class RegistrationScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Insert Haseena Heart Logo Here',
-              style: Theme.of(context).textTheme.headline3,
-            ),
-            SizedBox(
-              height: 30,
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: reusableTextField("Enter UserName", Icons.person_outline,
@@ -60,7 +54,7 @@ class RegistrationScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            firebaseUIButton(context, false, () {
+            firebaseUIButton(context, isRegistration, () {
               Navigator.pushNamed(context, '/');
             }),
             SizedBox(

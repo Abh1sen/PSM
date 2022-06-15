@@ -11,6 +11,7 @@ import 'package:psm/config/theme.dart';
 import 'package:psm/repositories/checkout/checkout_repository.dart';
 import 'package:psm/repositories/product/product_repository.dart';
 import 'package:psm/repositories/category/category_repository.dart';
+import 'package:psm/screens/login/after_login_screen.dart';
 import 'package:psm/screens/screens.dart';
 
 Future<void> main() async {
