@@ -49,7 +49,9 @@ class LoginScreen extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            firebaseUIButton(context, isLogin, () {}),
+            firebaseUIButton(context, isLogin, () {
+              Navigator.pushNamed(context, '/logout');
+            }),
             SizedBox(
               height: 30,
             ),

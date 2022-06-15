@@ -1,9 +1,12 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/checkout/checkout_bloc.dart';
 import 'package:psm/models/catagory_model.dart';
+import 'package:psm/screens/home/home_screen.dart';
 import 'package:psm/widgets/widgets.dart';
 
 import '../../models/models.dart';
@@ -55,11 +58,18 @@ class RegistrationScreen extends StatelessWidget {
               height: 30,
             ),
             firebaseUIButton(context, isRegistration, () {
-              Navigator.pushNamed(context, '/');
+              FirebaseAuth.instance
+                  .createUserWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text)
+                  .then((value) {
+                print("Created New Account");
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()));
+              }).onError((error, stackTrace) {
+                print("Error ${error.toString()}");
+              });
             }),
-            SizedBox(
-              height: 30,
-            ),
           ],
         ),
       ),
