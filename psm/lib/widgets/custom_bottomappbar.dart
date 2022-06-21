@@ -68,6 +68,8 @@ class CustomBottomAppBar extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, '/cart');
           }),
+
+      //Todo update the routing into logout page after login
       IconButton(
           icon: Icon(
             Icons.person,
