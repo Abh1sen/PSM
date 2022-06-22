@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:psm/blocs/cart/bloc/cart_bloc.dart';
@@ -76,7 +77,9 @@ class CustomBottomAppBar extends StatelessWidget {
             color: Colors.black,
           ),
           onPressed: () {
-            Navigator.pushNamed(context, '/login');
+            FirebaseAuth.instance.currentUser == null
+                ? Navigator.pushNamed(context, '/login')
+                : Navigator.pushNamed(context, '/logout');
           }),
     ];
   }
