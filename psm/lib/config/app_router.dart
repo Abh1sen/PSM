@@ -32,6 +32,8 @@ class AppRouter {
         return RegistrationScreen.route();
       case AfterLoginScreen.routeName:
         return AfterLoginScreen.route();
+      case OrderConfirmationScreen.routeName:
+        return OrderConfirmationScreen.route();
       default:
         return _errorRoute();
     }

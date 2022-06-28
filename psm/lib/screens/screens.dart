@@ -8,4 +8,4 @@ export 'checkout/checkout_screen.dart';
 export 'login/login_screen.dart';
 export 'registration/registration_screen.dart';
 export 'login/after_login_screen.dart';
-export 'order_confirmation/order_confirmation.dart';
+export 'order_confirmation/order_confirmation_screen.dart';
