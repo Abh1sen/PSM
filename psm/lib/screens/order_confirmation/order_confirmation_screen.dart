@@ -22,10 +22,55 @@ class OrderConfirmationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Order Confirmed',
+        title: 'Thank You',
       ),
-      bottomNavigationBar: CustomBottomAppBar(screen: routeName),
-      body: SizedBox(),
+      body: Padding(
+        padding: const EdgeInsets.only(bottom: 80),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.check_circle,
+                  color: Colors.green,
+                  size: 125,
+                ),
+                SizedBox(height: 10),
+                Text(
+                  "Order Confirmed",
+                  style: Theme.of(context).textTheme.headline2,
+                ),
+                SizedBox(height: 40),
+                ElevatedButton(
+                  child: Text(
+                    "Return to Home",
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.resolveWith((states) {
+                        if (states.contains(MaterialState.pressed)) {
+                          return Colors.red;
+                        }
+                        return Colors.black;
+                      }),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30)))),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
