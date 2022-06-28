@@ -154,6 +154,7 @@ class CustomBottomAppBar extends StatelessWidget {
                 context
                     .read<CheckoutBloc>()
                     .add(ConfirmCheckout(checkout: state.checkout));
+                    Navigator.pushNamed(context, '/orderconfirmation');
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.black,
