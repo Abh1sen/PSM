@@ -37,15 +37,22 @@ class ProductScreen extends StatelessWidget {
         ),
       ),
       body: ListView(children: [
-        CarouselSlider(
-            options: CarouselOptions(
-              aspectRatio: 1.5,
-              viewportFraction: 0.85,
-              enlargeCenterPage: true,
-              enlargeStrategy: CenterPageEnlargeStrategy.height,
-              autoPlay: true,
-            ),
-            items: [HeroCarouselCard(product: product)]),
+        // CarouselSlider(
+        //     options: CarouselOptions(
+        //       aspectRatio: 1.5,
+        //       viewportFraction: 0.85,
+        //       enlargeCenterPage: true,
+        //       enlargeStrategy: CenterPageEnlargeStrategy.height,
+        //       autoPlay: false,
+        //     ),
+        //     items: [HeroCarouselCard(product: product)]),
+        Image.network(
+          product.imageUrl,
+          width: 200.0,
+          height: 400.0,
+          fit: BoxFit.contain,
+        ),
+        SizedBox(height: 20,),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Stack(
