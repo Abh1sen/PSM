@@ -48,6 +48,8 @@ TextTheme textTheme() {
       bodyText2: TextStyle(
         color: Colors.black,
         fontSize: 10,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.normal
+        //testgit commit -m "HAS-2 <message>"es
       ));
+      //testingjirajenkins8julye
 }
